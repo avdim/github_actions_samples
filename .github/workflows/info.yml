@@ -1,4 +1,4 @@
-name: Labeler
+name: Info
 on:
   push:
     tags:
