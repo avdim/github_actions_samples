@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+    - uses: ./ # Uses an action in the root directory
     - name: Hello world action step
       id: hello
-      uses: avdim/github_actions_samples/hello-world-docker-action@master
+      #uses: avdim/github_actions_samples/hello-world-docker-action@master
+      uses: actions/hello-world-docker-actio@master
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
