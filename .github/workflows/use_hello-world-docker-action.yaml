@@ -3,19 +3,15 @@ on:
     paths: 
       - ".github/workflows/use_hello-world-docker-action.yaml"
       - "hello-world-docker-action/*"
-#     tags: 
-#       - "hello-world-docker-action*"
 
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - uses: ./ # Uses an action in the root directory
     - name: Hello world action step
       id: hello
-      #uses: avdim/github_actions_samples/hello-world-docker-action@master
-      uses: avdim/hello-world-docker-actio@master
+      uses: ${{github.repository}}/hello-world-docker-action@master
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
