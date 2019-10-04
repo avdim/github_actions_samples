@@ -1,0 +1,26 @@
+name: Labeler
+on:
+  push:
+    tags:
+      - "info*"
+jobs:
+  label:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04] #, macos-latest, windows-latest
+        java_version: [1.8] #, 10, 11, 12
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java_version }}
+      - name: system info
+        run: |
+          df -h
+          cat /proc/meminfo
+          free -m
+      - name: software info
+        run: |
+          env
+          gcloud components list
+      
