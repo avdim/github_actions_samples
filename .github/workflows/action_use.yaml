@@ -1,4 +1,7 @@
-on: [push]
+on: 
+  push:
+    tags: 
+      - "action*"
 
 jobs:
   hello_world_job:
@@ -7,7 +10,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: actions/hello-world-docker-action@v1
+      uses: avdim/github_actions_samples/hello-world-docker-action@master
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
