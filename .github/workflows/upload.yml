@@ -10,6 +10,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: "make files"
       run: |
+        mkdir upload
         echo "hi" > upload/test.txt
         echo "ho2" > upload/test2.txt
     - uses: avdim/upload-to-github-release@v1
