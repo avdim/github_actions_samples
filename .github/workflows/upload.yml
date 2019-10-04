@@ -10,13 +10,14 @@ jobs:
     - uses: actions/checkout@v1
     - name: "make files"
       run: |
-        echo "hi" > test.txt
-        echo "ho2" > test2.txt
+        echo "hi" > upload/test.txt
+        echo "ho2" > upload/test2.txt
     - uses: avdim/upload-to-github-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        file: "test.txt; test2*"
+#         file: "test.txt; test2*"
+        file: "upload/*"
         tags: true
         draft: false
         prerelease: false
