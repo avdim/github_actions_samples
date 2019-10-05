@@ -11,8 +11,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-#      uses: avdim/github_actions_samples/hello-world-docker-action@master
-      uses: ../../github_actions_samples/hello-world-docker-action@master
+      uses: avdim/github_actions_samples/hello-world-docker-action@master
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
