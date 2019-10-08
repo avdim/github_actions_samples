@@ -14,7 +14,7 @@ jobs:
         echo "hi" > upload/test.txt
         echo "ho2" > upload/test2.txt
 #    - uses: avdim/upload-to-github-release@v4
-    - uses: avdim/github_actions_samples/hello-world-docker-action@master
+    - uses: avdim/github_actions_samples/attach_file_to_github_release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
