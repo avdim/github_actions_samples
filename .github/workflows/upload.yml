@@ -19,8 +19,8 @@ jobs:
       with:
 #         file: "test.txt; test2*"
         file: "upload/*"
-        tags: true
-#         draft: false
+#        tags: true
+        draft: false
 #         prerelease: false
-        overwrite: false
+#        overwrite: false
 #         verbose: true
