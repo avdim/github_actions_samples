@@ -13,7 +13,7 @@ jobs:
         mkdir upload
         echo "hi" > upload/test.txt
         echo "ho2" > upload/test2.txt
-    - uses: avdim/upload-to-github-release@v1
+    - uses: avdim/upload-to-github-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
