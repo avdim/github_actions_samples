@@ -136,14 +136,14 @@ async function run() {
                 tag: release_name
             });
         } catch (error) {
-            console.log(`TODO Try to get release ${release_name} from ${action_github.context.repo.owner}/${action_github.context.repo.repo} : ${error.message}`);
+            console.log(`TODO2 Try to get release ${release_name} from ${action_github.context.repo.owner}/${action_github.context.repo.repo} : ${error.message}`);
         }
 
         if (is_verbose) {
             console.log("============================= v3 API: getReleaseByTag =============================");
         }
         if (deploy_release && deploy_release.headers) {
-            console.log(`TODO Try to get release ${release_name} from ${action_github.context.repo.owner}/${action_github.context.repo.repo} : ${deploy_release.headers.status}`);
+            console.log(`TODO2 Try to get release ${release_name} from ${action_github.context.repo.owner}/${action_github.context.repo.repo} : ${deploy_release.headers.status}`);
             if (is_verbose) {
                 console.log(`getReleaseByTag.data = ${JSON.stringify(deploy_release.data)}`);
             }
@@ -162,7 +162,7 @@ async function run() {
                 if (is_verbose) {
                     console.log("============================= v3 API: updateRelease =============================");
                 }
-                console.log(`TODO Try to update release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo}`);
+                console.log(`TODO2 Try to update release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo}`);
                 deploy_release = await octokit.repos.updateRelease({
                     owner: action_github.context.repo.owner,
                     repo: action_github.context.repo.repo,
@@ -181,7 +181,7 @@ async function run() {
                     console.log(`updateRelease.data = ${JSON.stringify(deploy_release.data)}`);
                 }
             } catch (error) {
-                var msg = `TODO Try to update release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo} failed: ${error.message}`;
+                var msg = `TODO2 Try to update release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo} failed: ${error.message}`;
                 msg += `\r\n${error.stack}`;
                 console.log(msg);
                 action_core.setFailed(msg);
@@ -191,7 +191,7 @@ async function run() {
                 if (is_verbose) {
                     console.log("============================= v3 API: createRelease =============================");
                 }
-                console.log(`TODO Try to create release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo}`);
+                console.log(`TODO2 Try to create release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo}`);
                 deploy_release = await octokit.repos.createRelease({
                     owner: action_github.context.repo.owner,
                     repo: action_github.context.repo.repo,
@@ -211,7 +211,7 @@ async function run() {
                     console.log(`createRelease.data = ${JSON.stringify(deploy_release.data)}`);
                 }
             } catch (error) {
-                var msg = `TODO Try to create release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo} failed: ${error.message}`;
+                var msg = `TODO2 Try to create release ${release_name} for ${action_github.context.repo.owner}/${action_github.context.repo.repo} failed: ${error.message}`;
                 msg += `\r\n${error.stack}`;
                 console.log(msg);
                 action_core.setFailed(msg);
