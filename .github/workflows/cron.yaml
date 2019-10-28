@@ -1,0 +1,14 @@
+name: info
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+jobs:
+  label:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04] #, macos-latest, windows-latest
+        java_version: [1.8] #, 10, 11, 12
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: date
+        run: date
