@@ -3,6 +3,9 @@ on:
   schedule:
      #- cron: '0 9 * * *' # 12:00 по Москве
      - cron: '0 2 * * *' # 05:00 утра по Москва
+  push:
+    tags: 
+      - "night*"
 jobs:
   label:
     strategy:
