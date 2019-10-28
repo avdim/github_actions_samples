@@ -1,4 +1,4 @@
-name: info
+name: cron
 on:
   schedule:
     - cron: '*/5 * * * *'
