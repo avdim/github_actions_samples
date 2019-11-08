@@ -3,6 +3,7 @@ on:
     paths: 
       - ".github/workflows/use_hello-world-docker-action.yaml"
       - "hello-world-docker-action/*"
+    tags: "docker*"
 
 jobs:
   hello_world_job:
