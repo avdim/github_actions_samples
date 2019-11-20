@@ -1,3 +1,5 @@
+# copy from: https://github.community/t5/GitHub-Actions/GitHub-Actions-Manual-Trigger-Approvals/m-p/33364#M1478
+
 name: 'Deploy'
 on: ['deployment']
 
