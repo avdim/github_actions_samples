@@ -1,8 +1,8 @@
 name: Upload to release
 on:
   push:
-    tags:
-      - 'upload*'
+    paths: 
+      - ".github/workflows/upload.yml"
 jobs:
   build:
     runs-on: ubuntu-18.04
