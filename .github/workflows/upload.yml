@@ -19,3 +19,4 @@ jobs:
       with:
 #         file: "test.txt; test2*"
         file: "upload/*"
+
