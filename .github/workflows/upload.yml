@@ -16,6 +16,8 @@ jobs:
     - uses: avdim/upload-to-github-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PRE_RELEASE_PREFIX: "MyBuild-"
+        RELEASE_NOTES_BASE_64: "cGFzc3dvcmQ="
       with:
 #         file: "test.txt; test2*"
         file: "upload/*"
