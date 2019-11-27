@@ -13,7 +13,7 @@ jobs:
         mkdir upload
         echo "hi" > upload/test.txt
         echo "ho2" > upload/test2.txt
-    - uses: avdim/upload-to-github-release@master
+    - uses: avdim/upload-to-github-release@v2.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PRE_RELEASE_PREFIX: "MyBuild-"
@@ -21,7 +21,6 @@ jobs:
       with:
 #         file: "test.txt; test2*"
         file: "upload/*"
-
 
 
 
