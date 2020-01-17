@@ -6,32 +6,27 @@ mkdir test_dir
 touch test_dir/empty_file
 ls -la test_dir
 
-#Задать ANDROID_HOME если ещё не задано в системе
-ANDROID_HOME=$ANDROID_HOME
-
 SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-ANDROID_HOME_TWO="$PWD/android-sdk-2"
+ANDROID_HOME="$PWD/android-sdk"
 ANDROID_VERSION=29
 ANDROID_BUILD_TOOLS_VERSION=29.0.1
 
-ADB=$ANDROID_HOME_TWO/platform-tools/adb
-SDK_MANAGER=$AANDROID_HOME_TWO/tools/bin/sdkmanager
-EMULATOR=$ANDROID_HOME_TWO/emulator/emulator
-AVD_MANAGER=$ANDROID_HOME_TWO/tools/bin/avdmanager
+ADB=$ANDROID_HOME/platform-tools/adb
+SDK_MANAGER=$ANDROID_HOME/tools/bin/sdkmanager
+EMULATOR=$ANDROID_HOME/emulator/emulator
+AVD_MANAGER=$ANDROID_HOME/tools/bin/avdmanager
 
-mkdir --mode 777 -p $ANDROID_HOME_TWO \
-  && cd "$ANDROID_HOME_TWO" \
+mkdir --mode 777 -p "$ANDROID_HOME" \
+  && cd "$ANDROID_HOME" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
-  && rm sdk.zip # \
-#  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
+  && rm sdk.zip \
+  && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 $ADB devices
 
-ls -la $ANDROID_HOME_TWO
-
-$ANDROID_HOME_TWO/tools/bin/sdkmanager --update \
-  && $ANDROID_HOME_TWO/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
+$ANDROID_HOME/tools/bin/sdkmanager --update \
+  && $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
   
 kill_all_emulators() {
     $ADB devices | grep emulator | cut -f1 | while read line; do $ADB -s $line emu kill; done
