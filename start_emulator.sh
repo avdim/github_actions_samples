@@ -29,7 +29,7 @@ mkdir --mode 777 -p $ANDROID_HOME_TWO \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
   && rm sdk.zip
-#  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
+  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
 
 ls -la $ANDROID_HOME_TWO
 
