@@ -6,30 +6,31 @@ set -o xtrace
 ANDROID_HOME=$ANDROID_HOME
 
 SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-ANDROID_HOME2="~/android-sdk-2"
+ANDROID_HOME_TWO="~/android-sdk-2"
 ANDROID_VERSION=29
 ANDROID_BUILD_TOOLS_VERSION=29.0.1
 
-ADB=$ANDROID_HOME2/platform-tools/adb
-SDK_MANAGER=$ANDROID_HOME2/tools/bin/sdkmanager
-EMULATOR=$ANDROID_HOME2/emulator/emulator
-AVD_MANAGER=$ANDROID_HOME2/tools/bin/avdmanager
+ADB=$ANDROID_HOME_TWO/platform-tools/adb
+SDK_MANAGER=$AANDROID_HOME_TWO/tools/bin/sdkmanager
+EMULATOR=$ANDROID_HOME_TWO/emulator/emulator
+AVD_MANAGER=$ANDROID_HOME_TWO/tools/bin/avdmanager
 
-mkdir --mode 777 -p $ANDROID_HOME2
-touch $ANDROID_HOME2/test.txt
-ls -la $ANDROID_HOME2
+mkdir --mode 777 -p "$ANDROID_HOME_TWO"
+touch "$ANDROID_HOME_TWO/test.txt"
+echo "hi" >> "$ANDROID_HOME_TWO/test.txt"
+ls -la "$ANDROID_HOME_TWO"
 
-mkdir --mode 777 -p $ANDROID_HOME2 \
-  && cd "$ANDROID_HOME2" \
+mkdir --mode 777 -p $ANDROID_HOME_TWO \
+  && cd "$ANDROID_HOME_TWO" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
   && rm sdk.zip
-#  && yes | $ANDROID_HOME2/tools/bin/sdkmanager --licenses
+#  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
 
-ls -la $ANDROID_HOME2
+ls -la $ANDROID_HOME_TWO
 
-$ANDROID_HOME2/tools/bin/sdkmanager --update \
-  && $ANDROID_HOME2/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
+$ANDROID_HOME_TWO/tools/bin/sdkmanager --update \
+  && $ANDROID_HOME_TWO/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
   
 kill_all_emulators() {
     $ADB devices | grep emulator | cut -f1 | while read line; do $ADB -s $line emu kill; done
