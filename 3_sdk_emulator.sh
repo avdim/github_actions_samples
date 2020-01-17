@@ -2,4 +2,4 @@
 
 ./ 0_env.sh
 
-$SDK_MANAGER "emulator"
+$SDK_MANAGER "emulator" > /dev/null 2>&1
