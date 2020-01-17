@@ -9,7 +9,7 @@ jobs:
     name: android emulator
     steps:
       - uses: actions/checkout@v1
-      - run: ./start_emulator.sh
+      - run: ./start_emulator_in_docker.sh
 
 
 
