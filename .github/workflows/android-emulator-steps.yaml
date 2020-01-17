@@ -9,36 +9,36 @@ jobs:
     name: android emulator
     steps:
       - uses: actions/checkout@v1
-      - run: |
-        SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-        ANDROID_HOME="$PWD/android-sdk"
-        ANDROID_VERSION=29
-        ANDROID_BUILD_TOOLS_VERSION=29.0.1
+      - run: |-
+          SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
+          ANDROID_HOME="$PWD/android-sdk"
+          ANDROID_VERSION=29
+          ANDROID_BUILD_TOOLS_VERSION=29.0.1
 
-        ADB=$ANDROID_HOME/platform-tools/adb
-        SDK_MANAGER=$ANDROID_HOME/tools/bin/sdkmanager
-        EMULATOR=$ANDROID_HOME/emulator/emulator
-        AVD_MANAGER=$ANDROID_HOME/tools/bin/avdmanage
-      - run: |
-        mkdir --mode 777 -p "$ANDROID_HOME"
-        cd "$ANDROID_HOME"
-        curl -o sdk.zip $SDK_URL
-        unzip -qq sdk.zip > /dev/null 2>&1
-        rm sdk.zip
-      - run: |
-        yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-      - run: |
-        $ADB devices
-      - run: |
-        $ANDROID_HOME/tools/bin/sdkmanager --update
-      - run: |
-        $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
-      - run: |
-        $ADB kill-server
-      - run: |
-        $SDK_MANAGER "emulator"
-      - run: |
-        yes | $SDK_MANAGER "system-images;android-29;google_apis;x86_64" #default
+          ADB=$ANDROID_HOME/platform-tools/adb
+          SDK_MANAGER=$ANDROID_HOME/tools/bin/sdkmanager
+          EMULATOR=$ANDROID_HOME/emulator/emulator
+          AVD_MANAGER=$ANDROID_HOME/tools/bin/avdmanage
+      - run: |-
+          mkdir --mode 777 -p "$ANDROID_HOME"
+          cd "$ANDROID_HOME"
+          curl -o sdk.zip $SDK_URL
+          unzip -qq sdk.zip > /dev/null 2>&1
+          rm sdk.zip
+      - run: |-
+          yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+      - run: |-
+          $ADB devices
+      - run: |-
+          $ANDROID_HOME/tools/bin/sdkmanager --update
+      - run: |-
+          $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
+      - run: |-
+          $ADB kill-server
+      - run: |-
+          $SDK_MANAGER "emulator"
+      - run: |-
+          yes | $SDK_MANAGER "system-images;android-29;google_apis;x86_64" #default
 
 
 
