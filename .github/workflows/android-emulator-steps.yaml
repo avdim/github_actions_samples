@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v1
       - run: ./1_download_sdk.sh
       - run: ./2_platform_tools.sh
-      
+      - run: ./3_sdk_emulator.sh
 
 
