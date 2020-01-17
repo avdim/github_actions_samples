@@ -19,8 +19,10 @@ mkdir --mode 777 -p $ANDROID_HOME2 \
   && cd "$ANDROID_HOME2" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
-  && rm sdk.zip \
-  && yes | $ANDROID_HOME2/tools/bin/sdkmanager --licenses
+  && rm sdk.zip
+#  && yes | $ANDROID_HOME2/tools/bin/sdkmanager --licenses
+
+ls -la $ANDROID_HOME2
 
 $ANDROID_HOME2/tools/bin/sdkmanager --update \
   && $ANDROID_HOME2/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
