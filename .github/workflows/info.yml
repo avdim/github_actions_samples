@@ -1,9 +1,8 @@
 name: info
 on:
   push:
-    tags:
-      - "info*"
-    paths: ".github/workflows/info.yml"
+    paths: 
+      - ".github/workflows/info.yml"
 jobs:
   label:
     strategy:
