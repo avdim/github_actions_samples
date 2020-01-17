@@ -5,12 +5,13 @@ on:
 
 env:
   ANDROID_BUILD_TOOLS: "$ANDROID_HOME/build-tools/29.0.2"
-  PATH: "$PATH:$ANDROID_BUILD_TOOLS"
 
 jobs:
   android-emulator:
     runs-on: ubuntu-latest
     name: android emulator
     steps:
+      - run: export ANDROID_BUILD_TOOLS="$ANDROID_HOME/build-tools/29.0.2"
+      - run: export PATH="$PATH:$ANDROID_BUILD_TOOLS"
       - run: ls "$ANDROID_HOME/build-tools/29.0.2"
       - run: env
