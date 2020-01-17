@@ -23,8 +23,10 @@ mkdir --mode 777 -p $ANDROID_HOME_TWO \
   && cd "$ANDROID_HOME_TWO" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
-  && rm sdk.zip \
-  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
+  && rm sdk.zip # \
+#  && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
+
+$ADB devices
 
 ls -la $ANDROID_HOME_TWO
 
