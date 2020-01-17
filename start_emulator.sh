@@ -18,7 +18,7 @@ AVD_MANAGER=$ANDROID_HOME/tools/bin/avdmanager
 
 mkdir --mode 777 -p "$ANDROID_HOME" \
   && cd "$ANDROID_HOME" \
-  && curl -o sdk.zip $SDK_URL \
+  && curl -o sdk.zip $SDK_URL > /dev/null 2>&1 & \
   && unzip -qq sdk.zip \
   && rm sdk.zip \
   && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
