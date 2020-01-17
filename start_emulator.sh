@@ -10,7 +10,7 @@ ls -la test_dir
 ANDROID_HOME=$ANDROID_HOME
 
 SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-ANDROID_HOME_TWO="~/android-sdk-2"
+ANDROID_HOME_TWO="$PWD/android-sdk-2"
 ANDROID_VERSION=29
 ANDROID_BUILD_TOOLS_VERSION=29.0.1
 
