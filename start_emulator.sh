@@ -6,24 +6,24 @@ set -o xtrace
 ANDROID_HOME=$ANDROID_HOME
 
 SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-ANDROID_HOME="~/android-sdk-2"
+ANDROID_HOME2="/android-sdk-2"
 ANDROID_VERSION=29
 ANDROID_BUILD_TOOLS_VERSION=29.0.1
 
-ADB=$ANDROID_HOME/platform-tools/adb
-SDK_MANAGER=$ANDROID_HOME/tools/bin/sdkmanager
-EMULATOR=$ANDROID_HOME/emulator/emulator
-AVD_MANAGER=$ANDROID_HOME/tools/bin/avdmanager
+ADB=$ANDROID_HOME2/platform-tools/adb
+SDK_MANAGER=$ANDROID_HOME2/tools/bin/sdkmanager
+EMULATOR=$ANDROID_HOME2/emulator/emulator
+AVD_MANAGER=$ANDROID_HOME2/tools/bin/avdmanager
 
-mkdir --mode 777 -p $ANDROID_HOME \
-  && cd "$ANDROID_HOME" \
+mkdir --mode 777 -p $ANDROID_HOME2 \
+  && cd "$ANDROID_HOME2" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
   && rm sdk.zip \
-  && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+  && yes | $ANDROID_HOME2/tools/bin/sdkmanager --licenses
 
-$ANDROID_HOME/tools/bin/sdkmanager --update \
-  && $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
+$ANDROID_HOME2/tools/bin/sdkmanager --update \
+  && $ANDROID_HOME2/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools"
   
 kill_all_emulators() {
     $ADB devices | grep emulator | cut -f1 | while read line; do $ADB -s $line emu kill; done
