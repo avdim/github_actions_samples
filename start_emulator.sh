@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+set -o xtrace
+
 mkdir test_dir
 touch test_dir/empty_file
 ls -la test_dir
-
-set -o xtrace
 
 #Задать ANDROID_HOME если ещё не задано в системе
 ANDROID_HOME=$ANDROID_HOME
