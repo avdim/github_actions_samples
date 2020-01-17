@@ -8,6 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     name: android emulator
     steps:
-      - run: pwd
-      - run: ls -la
+      - uses: actions/checkout@v1
       - run: ./start_emulator.sh
