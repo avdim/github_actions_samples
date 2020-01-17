@@ -15,6 +15,10 @@ SDK_MANAGER=$ANDROID_HOME2/tools/bin/sdkmanager
 EMULATOR=$ANDROID_HOME2/emulator/emulator
 AVD_MANAGER=$ANDROID_HOME2/tools/bin/avdmanager
 
+mkdir --mode 777 -p $ANDROID_HOME2
+touch $ANDROID_HOME2/test.txt
+ls -la $ANDROID_HOME2
+
 mkdir --mode 777 -p $ANDROID_HOME2 \
   && cd "$ANDROID_HOME2" \
   && curl -o sdk.zip $SDK_URL \
