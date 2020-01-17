@@ -1,0 +1,11 @@
+on:
+  push:
+    paths: 
+      - ".github/workflows/android-emulator.yaml"
+
+jobs:
+  android-emulator:
+    runs-on: ubuntu-latest
+    name: android emulator
+    steps:
+      run: env
