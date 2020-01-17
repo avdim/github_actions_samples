@@ -8,4 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     name: android emulator
     steps:
+      - run: ls "$ANDROID_HOME"
       - run: env
