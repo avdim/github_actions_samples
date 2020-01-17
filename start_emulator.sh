@@ -24,11 +24,11 @@ $EMULATOR -list-avds
 kill_all_emulators
 $EMULATOR -avd testAvd -no-audio > /dev/null 2>&1 &
 #$EMULATOR -avd testAvd -no-audio -no-window > /dev/null 2>&1 &
-adb devices
+$ADB devices
 sleep 20
 
-#adb -e shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > /tmp/screen.png
+#$ADB -e shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > /tmp/screen.png
 
-adb -e shell screencap /sdcard/screen.png
-adb -e pull /sdcard/screen.png
+$ADB -e shell screencap /sdcard/screen.png
+$ADB -e pull /sdcard/screen.png
 
