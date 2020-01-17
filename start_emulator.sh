@@ -19,16 +19,11 @@ SDK_MANAGER=$AANDROID_HOME_TWO/tools/bin/sdkmanager
 EMULATOR=$ANDROID_HOME_TWO/emulator/emulator
 AVD_MANAGER=$ANDROID_HOME_TWO/tools/bin/avdmanager
 
-mkdir --mode 777 -p "$ANDROID_HOME_TWO"
-touch "$ANDROID_HOME_TWO/test.txt"
-echo "hi" >> "$ANDROID_HOME_TWO/test.txt"
-ls -la "$ANDROID_HOME_TWO"
-
 mkdir --mode 777 -p $ANDROID_HOME_TWO \
   && cd "$ANDROID_HOME_TWO" \
   && curl -o sdk.zip $SDK_URL \
   && unzip -qq sdk.zip \
-  && rm sdk.zip
+  && rm sdk.zip \
   && yes | $ANDROID_HOME_TWO/tools/bin/sdkmanager --licenses
 
 ls -la $ANDROID_HOME_TWO
