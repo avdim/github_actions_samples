@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     name: android emulator
     steps:
-      - run: start_emulator.sh
+      - run: ./start_emulator.sh
