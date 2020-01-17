@@ -12,6 +12,9 @@ jobs:
       - run: ./1_download_sdk.sh
       - run: ./2_platform_tools.sh
       - run: ./3_sdk_emulator.sh
+      - run: ./4_download_emulator.sh
+      - run: ./5_create_emulator.sh
+      - run: ./6_screenshot.sh
 
 
 
