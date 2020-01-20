@@ -1,8 +1,7 @@
 on:
   push:
     paths: 
-      - ".github/workflows/android-emulator.yaml"
-      - "start_emulator.sh"
+      - ".github/workflows/android-emulator-steps.yaml"
 
 jobs:
   android-emulator:
@@ -10,11 +9,10 @@ jobs:
     name: android emulator
     steps:
       - uses: actions/checkout@v1
-      - run: ./start_emulator.sh
-
-
-
-
-
-
+      - run: android_emulator/1_download_sdk.sh
+      - run: android_emulator/2_platform_tools.sh
+      - run: android_emulator/3_sdk_emulator.sh
+      - run: android_emulator/4_download_emulator.sh
+      - run: android_emulator/5_create_emulator.sh
+      - run: android_emulator/6_screenshot.sh
 
