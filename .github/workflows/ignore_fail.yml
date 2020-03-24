@@ -12,6 +12,6 @@ jobs:
     - run: echo always
       if: always()
     - run: echo condition
-      if: succeeded() || failed()
+      if: success() || failure()
 #     - run: echo false
 #       if: false
