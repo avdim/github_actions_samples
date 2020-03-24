@@ -4,7 +4,8 @@ on:
     paths:
       - ".github/workflows/ignore_fail.yml"
 jobs:
-  build:
+  job1:
+    if: false
     runs-on: ubuntu-latest
     steps:
     - name: fail
