@@ -7,14 +7,11 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-    - name: fail
+    - run: exit 1
       #continue-on-error: true
-      run: exit 1
-    - name: continue
+    - run: echo always
       if: always()
-      run: echo always
     - run: echo condition
       if: succeeded() || failed()
 #     - run: echo false
 #       if: false
-      
