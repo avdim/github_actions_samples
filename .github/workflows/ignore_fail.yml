@@ -12,5 +12,9 @@ jobs:
       run: exit 1
     - name: continue
       if: always()
-      run: |
-        echo continue
+      run: echo always
+    - run: echo condition
+      if: succeeded() || failed()
+#     - run: echo false
+#       if: false
+      
