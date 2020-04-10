@@ -1,10 +1,15 @@
 # copy from: https://github.community/t5/GitHub-Actions/GitHub-Actions-Manual-Trigger-Approvals/m-p/33364#M1478
 
 name: 'Deploy'
-on: ['deployment']
+on:
+  deployment:
+  push:
+    paths: 
+      - ".github/workflows/deployment.yml"
 
 jobs:
   deployment:
+    if: github.event.deployment.payload.keyBoolean
 
     runs-on: 'ubuntu-latest'
 
