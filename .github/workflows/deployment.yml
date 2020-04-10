@@ -9,7 +9,7 @@ on:
 
 jobs:
   deployment:
-    if: github.event.deployment.payload.keyBoolean
+    if: github.event.deployment.payload.keyBoolean #TODO
 
     runs-on: 'ubuntu-latest'
 
