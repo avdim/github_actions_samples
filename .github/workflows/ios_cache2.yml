@@ -1,0 +1,22 @@
+name: ios_cache2
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ios_cache2.yml"
+      - "ios_cache/Podfile.lock"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: cat Pods/cache.txt || echo "cache.txt missing"
+    - uses: actions/cache@v1
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+    - run: mkdir Pods || echo "dir Pods exist's"
+    - run: echo "3" >> Pods/cache.txt
+    - run: cat Pods/cache.txt || echo "cache.txt missing"
