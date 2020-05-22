@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - ".github/workflows/ios_cache.yml"
+      - "ios_cache/Podfile.lock"
 
 jobs:
   build:
