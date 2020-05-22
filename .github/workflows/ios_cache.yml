@@ -19,10 +19,8 @@ jobs:
       with:
         path: Pods
         key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-pods
     - run: mkdir Pods || echo "dir Pods exist's"
-    - run: echo "2" >> Pods/cache.txt
+    - run: echo "3" >> Pods/cache.txt
     - run: cat Pods/cache.txt || echo "cache.txt missing"
 
 
