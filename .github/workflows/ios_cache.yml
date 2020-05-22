@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ios_cache
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ios_cache.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: cat Pods/cache.txt || echo "cache.txt missing"
+    - uses: actions/cache@v1
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods
+    - run: mkdir Pods || echo "dir Pods exist's"
+    - run: echo "1" >> Pods/cache.txt
+    - run: cat Pods/cache.txt || echo "cache.txt missing"
