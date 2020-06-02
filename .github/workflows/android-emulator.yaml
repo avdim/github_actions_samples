@@ -5,7 +5,7 @@ on:
 
 jobs:
   android-emulator:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     name: android emulator
     steps:
       - uses: actions/checkout@v1
