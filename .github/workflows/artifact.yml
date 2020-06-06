@@ -22,7 +22,7 @@ jobs:
           touch output/dir1/file_in_dir.txt
       - uses: actions/upload-artifact@v2
         with: 
-          name: job1-arficact
+          name: job1-artifact
           path: output
   download:
     needs: [upload]
@@ -30,6 +30,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: job1-arficact
+          name: job1-artifact
           path: input
       - run: ls -la input/*
