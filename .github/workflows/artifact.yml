@@ -23,7 +23,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with: 
           name: job1-arficact
-          path: output/**
+          path: output
   download:
     needs: [upload]
     runs-on: ubuntu-20.04
@@ -32,5 +32,4 @@ jobs:
         with:
           name: job1-arficact
           path: input
-      - run: ls -la input
       - run: ls -la input/*
