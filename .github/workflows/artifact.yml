@@ -22,4 +22,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/download-artifact@v2
-      - run: ls -la
+        with:
+          path: input
+      - run: ls -la input
