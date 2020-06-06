@@ -19,7 +19,7 @@ jobs:
           echo "sample" >> output/file.txt
       - uses: actions/upload-artifact@v2
         with: 
-          name: output
+          name: job1-arficact
           path: output/**
   download:
     needs: [upload]
@@ -27,6 +27,6 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: output
+          name: job1-arficact
           path: input
       - run: ls -la input
