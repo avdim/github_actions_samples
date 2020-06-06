@@ -33,3 +33,4 @@ jobs:
           name: job1-arficact
           path: input
       - run: ls -la input
+      - run: ls -la input/*
