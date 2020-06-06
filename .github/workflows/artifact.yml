@@ -19,6 +19,7 @@ jobs:
           echo "sample" >> output/file.txt
       - uses: actions/upload-artifact@v2
         with: 
+          name: output_dir
           path: output/**
   download:
     needs: [upload]
