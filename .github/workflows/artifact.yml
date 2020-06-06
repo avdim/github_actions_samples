@@ -14,11 +14,12 @@ jobs:
   upload:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo "sample" >> file.txt
+      - run: |
+          mkdir output
+          echo "sample" >> output/file.txt
       - uses: actions/upload-artifact@v2
         with: 
-          name: file
-          path: file.txt
+          path: output
   download:
     needs: [upload]
     runs-on: ubuntu-20.04
