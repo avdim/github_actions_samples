@@ -16,7 +16,10 @@ jobs:
     steps:
       - run: |
           mkdir output
-          echo "sample" >> output/file.txt
+          touch output/file1.txt
+          touch output/file2.txt
+          mkdir output/dir1
+          touch output/dir1/file_in_dir.txt
       - uses: actions/upload-artifact@v2
         with: 
           name: job1-arficact
