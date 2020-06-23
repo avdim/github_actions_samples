@@ -28,5 +28,4 @@ jobs:
         run: |
           docker run containerstack/cpustress --cpu 1 --timeout 10s --metrics-brief
       - run: $ANDROID_HOME/tools/bin/avdmanager list
-      - run: gcloud firebase test android models list
       
