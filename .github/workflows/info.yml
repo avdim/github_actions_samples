@@ -31,5 +31,5 @@ jobs:
       - uses: actions/github-script@v4
         id: set-result
         with:
-          script: return "Hello!"
+          script: console.log(github.context.payload);
           result-encoding: string
