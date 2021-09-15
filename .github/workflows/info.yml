@@ -28,4 +28,8 @@ jobs:
         run: |
           docker run containerstack/cpustress --cpu 1 --timeout 10s --metrics-brief
       - run: $ANDROID_HOME/tools/bin/avdmanager list
-      
+      - uses: actions/github-script@v4
+        id: set-result
+        with:
+          script: return "Hello!"
+          result-encoding: string
