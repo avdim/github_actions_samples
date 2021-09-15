@@ -11,12 +11,12 @@ jobs:
         java_version: [1.8] #, 10, 11, 12
     runs-on: ${{ matrix.os }}
     steps:
-      - run: $ANDROID_HOME/tools/bin/avdmanager list
       - uses: actions/github-script@v4
         id: set-result
         with:
           script: console.log(context.payload);
           result-encoding: string
+      - run: $ANDROID_HOME/tools/bin/avdmanager list
       - run: touch empty_file && ls -la
       - uses: actions/setup-java@v1
         with:
