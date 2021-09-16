@@ -3,7 +3,7 @@ name: night_check
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 23 * * 1-5" #23:00 UTC (это 2:00 ночи по Москве) с понедельника по пятницу
+    - cron: "00 09 * * 1-5" #23:00 UTC (это 2:00 ночи по Москве) с понедельника по пятницу
 jobs:
   post-merge:
     timeout-minutes: 360
