@@ -33,3 +33,4 @@ jobs:
       - name: cpu stress
         run: |
           docker run containerstack/cpustress --cpu 1 --timeout 10s --metrics-brief
+
