@@ -17,22 +17,19 @@ jobs:
           script: console.log(context.payload);
           result-encoding: string
       
-      - uses: actions/github-script@v4
+      - uses: actions/github-script@v5
         id: check-timestamp
         with:
           script: |
-            console.log(context.payload.head_commit.timestamp);
-            console.log(Date.now());
-            var lastCommitTimestamp = Date.parse(context.payload.head_commit.timestamp);
-            var sinceLastCommit = Date.now() - lastCommitTimestamp;
-            console.log("Date.now(): " + Date.now());
-            console.log("sinceLastCommit: " + sinceLastCommit);
-            console.log(sinceLastCommit + " ms");
-            github.actions.cancelWorkflowRun({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              run_id: context.runId,
-            });
+            var lastCommitTimeMs = Date.parse(context.payload.head_commit.timestamp);
+            if (Date.now() - lastCommitTimeMs > 24 * 60 * 60 * 1000) {//Если прошло времени больше чем 24 часа
+              console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
+              github.actions.cancelWorkflowRun({
+                owner: context.payload.repository.owner.login,
+                repo: context.payload.repository.name,
+                run_id: context.runId,
+              });
+            }
           result-encoding: string
 
       - run: $ANDROID_HOME/tools/bin/avdmanager list
