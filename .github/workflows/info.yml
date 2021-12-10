@@ -28,6 +28,7 @@ jobs:
             console.log("Date.now(): " + Date.now());
             console.log("sinceLastCommit: " + sinceLastCommit);
             console.log(sinceLastCommit + " ms");
+            console.log(github)
             github.rest.actions.cancelWorkflowRun({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
