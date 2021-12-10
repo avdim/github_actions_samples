@@ -28,12 +28,11 @@ jobs:
             console.log("Date.now(): " + Date.now());
             console.log("sinceLastCommit: " + sinceLastCommit);
             console.log(sinceLastCommit + " ms");
-            console.log(context);
-            /*github.rest.actions.cancelWorkflowRun({
-              context.payload.repository.owner.login,
-              context.payload.repository.name,
-              ${{github.run_id}},
-            });*/
+            github.rest.actions.cancelWorkflowRun({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              run_id: context.runId,
+            });
           result-encoding: string
 
       - run: $ANDROID_HOME/tools/bin/avdmanager list
