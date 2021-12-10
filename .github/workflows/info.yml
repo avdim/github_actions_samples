@@ -20,7 +20,11 @@ jobs:
       - uses: actions/github-script@v4
         id: check-timestamp
         with:
-          script: Date.now() - console.log(context.payload.head_commit.timestamp);
+          script: |
+            console.log(context.payload.head_commit.timestamp);
+            console.log(Date.now());
+            var sinceLastCommit = Date.now() - context.payload.head_commit.timestamp;
+            console.log(sinceLastCommit)
           result-encoding: string
 
       - run: $ANDROID_HOME/tools/bin/avdmanager list
