@@ -23,7 +23,8 @@ jobs:
           script: |
             console.log(context.payload.head_commit.timestamp);
             console.log(Date.now());
-            var sinceLastCommit = Date.now() - context.payload.head_commit.timestamp;
+            var lastCommitTimestamp = Date.parse(context.payload.head_commit.timestamp);
+            var sinceLastCommit = Date.now() - lastCommitTimestamp;
             console.log(sinceLastCommit)
           result-encoding: string
 
