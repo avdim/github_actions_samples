@@ -25,10 +25,10 @@ jobs:
             console.log(Date.now());
             var lastCommitTimestamp = Date.parse(context.payload.head_commit.timestamp);
             var sinceLastCommit = Date.now() - lastCommitTimestamp;
-            console.log("Date.now(): " + Date.now())
-            console.log("sinceLastCommit: " + sinceLastCommit)
-            console.log(sinceLastCommit + " ms")
-            console.log(context)
+            console.log("Date.now(): " + Date.now());
+            console.log("sinceLastCommit: " + sinceLastCommit);
+            console.log(sinceLastCommit + " ms");
+            console.log(context);
             github.rest.actions.cancelWorkflowRun({
               context.payload.repository.owner.login,
               context.payload.repository.name,
