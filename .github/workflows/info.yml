@@ -23,9 +23,10 @@ jobs:
         id: check-timestamp
         with:
           script: |
-            const { child_process } = require('child_process');
-            var lastCommitStr = child_process("git log -1 --format=%ct")
-            console.log("lastCommitStr: " + lastCommitStr)
+            const execa = require('execa');
+            const { lastCommitStr } = await execa('git log -1 --format=%ct');
+            console.log("lastCommitStr: " + lastCommitStr);
+            
             var lastCommitTimeMs = Date.parse(context.payload.head_commit.timestamp);
             if (Date.now() - lastCommitTimeMs > 24 * 60 * 60 * 1000) {//Если прошло времени больше чем 24 часа
               console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
