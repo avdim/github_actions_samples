@@ -4,7 +4,7 @@ on:
     paths: 
       - ".github/workflows/info.yml"
   schedule:
-     - cron: '05 6 * * 0-6' # 9:05 по Москва с понедельника по пятницу
+     - cron: '31 6 * * 0-6'
 jobs:
   label:
     strategy:
