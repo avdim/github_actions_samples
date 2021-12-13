@@ -13,6 +13,8 @@ jobs:
         java_version: [1.8] #, 10, 11, 12
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Checkout current branch
+        uses: actions/checkout@master
       - uses: actions/github-script@v4
         id: set-result
         with:
