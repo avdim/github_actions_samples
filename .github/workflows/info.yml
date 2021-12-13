@@ -3,8 +3,8 @@ on:
   push:
     paths: 
       - ".github/workflows/info.yml"
-  schedule:
-     - cron: '31 6 * * 0-6'
+#   schedule:
+#      - cron: '31 6 * * 0-6'
 jobs:
   label:
     strategy:
@@ -19,20 +19,23 @@ jobs:
           script: console.log(context);
           result-encoding: string
       
-#       - uses: actions/github-script@v5
-#         id: check-timestamp
-#         with:
-#           script: |
-#             var lastCommitTimeMs = Date.parse(context.payload.head_commit.timestamp);
-#             if (Date.now() - lastCommitTimeMs > 24 * 60 * 60 * 1000) {//Если прошло времени больше чем 24 часа
-#               console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
-#               github.actions.cancelWorkflowRun({
-#                 owner: context.payload.repository.owner.login,
-#                 repo: context.payload.repository.name,
-#                 run_id: context.runId,
-#               });
-#             }
-#           result-encoding: string
+      - uses: actions/github-script@v5
+        id: check-timestamp
+        with:
+          script: |
+            const { child_process } = require('child_process');
+            var lastCommitStr = child_process("git log -1 --format=%ct")
+            console.log("lastCommitStr: " + lastCommitStr)
+            var lastCommitTimeMs = Date.parse(context.payload.head_commit.timestamp);
+            if (Date.now() - lastCommitTimeMs > 24 * 60 * 60 * 1000) {//Если прошло времени больше чем 24 часа
+              console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
+              github.actions.cancelWorkflowRun({
+                owner: context.payload.repository.owner.login,
+                repo: context.payload.repository.name,
+                run_id: context.runId,
+              });
+            }
+          result-encoding: string
 
       - run: $ANDROID_HOME/tools/bin/avdmanager list
       - run: touch empty_file && ls -la
