@@ -19,6 +19,7 @@ jobs:
           script: console.log(context);
           result-encoding: string
       
+      - run: npm install execa
       - uses: actions/github-script@v5
         id: check-timestamp
         with:
