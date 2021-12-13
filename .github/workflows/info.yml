@@ -3,6 +3,8 @@ on:
   push:
     paths: 
       - ".github/workflows/info.yml"
+  schedule:
+     - cron: '05 6 * * 0-6' # 9:05 по Москва с понедельника по пятницу
 jobs:
   label:
     strategy:
