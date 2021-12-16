@@ -33,7 +33,7 @@ jobs:
             console.log("lastCommitTimestampS: " + lastCommitTimestampS)
             if (Date.now()/1000 - lastCommitTimestampS > 1) {//Если прошло времени больше чем 24 часа
               console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
-              github.actions.cancelWorkflowRun({
+              github.rest.cancelWorkflowRun({
                 owner: context.payload.repository.owner.login,
                 repo: context.payload.repository.name,
                 run_id: context.runId,
