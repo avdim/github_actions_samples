@@ -24,7 +24,7 @@ jobs:
           OUTPUT=$(git log -1 --format=%ct)
           echo "LAST_COMMIT_TIMESTAMP_S=$OUTPUT" >> $GITHUB_ENV
           # Сохранили время последнего коммита в env LAST_COMMIT_TIMESTAMP_S
-      - uses: actions/github-script@v5
+      - uses: actions/github-script@v4
         id: check-timestamp
         with:
           script: |
@@ -33,7 +33,7 @@ jobs:
             console.log("lastCommitTimestampS: " + lastCommitTimestampS)
             if (Date.now()/1000 - lastCommitTimestampS > 1) {//Если прошло времени больше чем 24 часа
               console.log("Нет смысла запускать ночной прогон, т.к. с прошлого коммита прошло больше чем 24 часа")
-              github.rest.cancelWorkflowRun({
+              github.actions.cancelWorkflowRun({
                 owner: context.payload.repository.owner.login,
                 repo: context.payload.repository.name,
                 run_id: context.runId,
