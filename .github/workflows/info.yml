@@ -24,7 +24,7 @@ jobs:
           OUTPUT=$(git log -1 --format=%ct)
           echo "LAST_COMMIT_TIMESTAMP_S=$OUTPUT" >> $GITHUB_ENV
           # Сохранили время последнего коммита в env LAST_COMMIT_TIMESTAMP_S
-      - uses: actions/github-script@v4
+      - uses: actions/github-script@v4 # в версии @v5 не работает github.actions.cancelWorkflowRun
         id: check-timestamp
         with:
           script: |
