@@ -15,9 +15,6 @@ jobs:
     steps:
       - name: Checkout current branch
         uses: actions/checkout@master
-      - run: |
-          not avaliable command
-          echo "good command"
       - uses: actions/github-script@v4
         id: set-result
         with:
